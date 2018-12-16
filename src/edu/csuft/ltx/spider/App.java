@@ -2,7 +2,7 @@ package edu.csuft.ltx.spider;
 
 /**
  * 
- * @author Administrator
+ * @author other
  *
  */
 public class App {
