@@ -42,4 +42,14 @@ public class Film {
 	 */
 	String quote;
 
+
+	@Override
+	public String toString() {
+		return "Film [info=" + info + ", title=" + title + ", rating=" + rating
+				+ ", num=" + num + ", id=" + id + ", poster=" + poster
+				+ ", quote=" + quote + "]";
+	}
+	
+	
+
 }
