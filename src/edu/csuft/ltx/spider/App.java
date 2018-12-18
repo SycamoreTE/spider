@@ -2,6 +2,7 @@ package edu.csuft.ltx.spider;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -53,6 +54,10 @@ public class App {
 	   String file = "d:/film.csv";   //绝对路径
 	   file="film.csv";              //相对路径
 	   
+	   //排序
+	   Collections.sort(list);
+	   
+	   
 	   try(FileWriter out = new FileWriter(file)) {
 		   //写数据
 		   for (Film film : list) {
@@ -61,9 +66,6 @@ public class App {
 	   System.out.println("ok");
 	} catch (Exception e) {
 		// TODO: handle exception
-	}
-			   
-	  
-	   
+	}   
 }
 }

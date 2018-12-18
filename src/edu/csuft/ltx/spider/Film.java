@@ -1,6 +1,6 @@
 package edu.csuft.ltx.spider;
 
-public class Film {
+public class Film implements Comparable<Film>{
 	/*
 	 * 影片名称
 	 */
@@ -55,6 +55,10 @@ public class Film {
 		return "Film [info=" + info + ", title=" + title + ", rating=" + rating
 				+ ", num=" + num + ", id=" + id + ", poster=" + poster
 				+ ", quote=" + quote + "]";
+	}
+	@Override
+	public int compareTo(Film o) {
+		return o.id-id;
 	}
 	
 	
