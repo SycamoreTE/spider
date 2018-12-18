@@ -43,6 +43,13 @@ public class Film {
 	String quote;
 
 
+	public String toCSV() {
+	    return String.format("%d,%s,%d,%.1f\n",
+	    		id,
+	    		title,
+	    		num,
+	    		rating);
+	}
 	@Override
 	public String toString() {
 		return "Film [info=" + info + ", title=" + title + ", rating=" + rating
