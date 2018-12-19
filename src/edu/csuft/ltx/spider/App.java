@@ -46,16 +46,20 @@ public class App {
 	   
 	   //数据排序
 	   System.out.println(list.size());
+	   
+	   ExecutorService pool2 = Executors.newFixedThreadPool(4);
+	   
 	   for(Film film :list) {
-		   System.out.println(film.toCSV());
+		   System.out.println(film.url);
+		   pool2.execute(new Spider(film.url,null));
 	   }
 	   
 	   //写入文件
-	   String file = "d:/film.csv";   //绝对路径
-	   file="film.csv";              //相对路径
-	   
-	   //排序
-	   Collections.sort(list);
+//	   String file = "d:/film.csv";   //绝对路径
+//	   file="film.csv";              //相对路径
+//	   
+//	   //排序
+//	   Collections.sort(list);
 	   
 	   
 	   try(FileWriter out = new FileWriter(file)) {
