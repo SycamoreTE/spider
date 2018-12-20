@@ -41,7 +41,7 @@ public class Spider implements Runnable{
 	    try {
 	    	
 			Document doc = Jsoup.connect(url).get();
-			
+			//从文档树中查找节点
 			Elements es = doc.select(".grid_view .item");
 			for(Element e :es){
 				Film f=new Film();

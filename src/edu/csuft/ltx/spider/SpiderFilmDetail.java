@@ -27,15 +27,22 @@ public class SpiderFilmDetail implements Runnable {
 		try {
 			Document doc = Jsoup.connect(url).get();
 		
-			Element e = d.getElementById("content");
+			Element e = doc.getElementById("content");
 			
 			String name = e.selectFirst("h1 span").text();
 			String year = e.selectFirst(".year").text();
 			
-			String director = e.select("#info span").get(0).select(".attrs a").text();
+			String director = e.selectFirst("#info .attrs").selectFirst("a").text();
 //			String script = e.select("#info span").get(1).select(".attrs a").text();
 			String script = e.select("#info .attrs").get(1).text();
 			String actor = e.selectFirst(".actor .attrs").text();
+			
+			System.out.printf("%s,%s,%s,%s,%s\n",
+					year,
+					name,
+					director,
+					script,
+					actor);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

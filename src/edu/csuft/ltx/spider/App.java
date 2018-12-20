@@ -16,10 +16,12 @@ public class App {
 	
 	//alt+/ 提示
    public static void main(String[] args) {
+	   //线程池
+	   //固定大小
 	   
 	   ExecutorService pool = Executors.newFixedThreadPool(4);
-	   //无限缓存
-	   //pool = Executors.newCachedThreadPool();
+	   //无限(缓存)
+	   pool = Executors.newCachedThreadPool();
 	   //一个线程
 	   //pool = Executors.newSingleThreadExecutor();
 	   
@@ -32,7 +34,7 @@ public class App {
 	   }
 	   
 	   pool.shutdown();
-	   System.out.println(pool.isTerminated());
+	   //System.out.println(pool.isTerminated());
 	   
 	   while(!pool.isTerminated()) {
 		   //加上休眠设置，每隔一段时间，做一次检测
@@ -45,14 +47,16 @@ public class App {
 	   }
 	   
 	   //数据排序
+	   Collections.sort(list);
 	   System.out.println(list.size());
 	   
 	   ExecutorService pool2 = Executors.newFixedThreadPool(4);
 	   
 	   for(Film film :list) {
 		   System.out.println(film.url);
-		   pool2.execute(new Spider(film.url,null));
+		   pool2.execute(new SpiderFilmDetail(film.url,null));
 	   }
+	   pool2.shutdown();
 	   
 	   //写入文件
 //	   String file = "d:/film.csv";   //绝对路径
@@ -62,14 +66,14 @@ public class App {
 //	   Collections.sort(list);
 	   
 	   
-	   try(FileWriter out = new FileWriter(file)) {
-		   //写数据
-		   for (Film film : list) {
-			   out.write(film.toCSV());
-		}
-	   System.out.println("ok");
-	} catch (Exception e) {
-		// TODO: handle exception
-	}   
+//	   try(FileWriter out = new FileWriter(file)) {
+//		   //写数据
+//		   for (Film film : list) {
+//			   out.write(film.toCSV());
+//		}
+//	   System.out.println("ok");
+//	} catch (Exception e) {
+//		// TODO: handle exception
+//	}   
 }
 }

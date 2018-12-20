@@ -8,30 +8,34 @@ import org.jsoup.nodes.Element;
 
 public class App2{
 	
-//	public static void main(String[] args) {
-//		
-//		String url = "https://movie.douban.com/subject/1292052/";
-//		
-//		try {
-//			Document d = Jsoup.connect(url).get();
-//			
-//			Element e = d.getElementById("content");
-//			
-//			String name = e.selectFirst("h1 span").text();
-//			String year = e.selectFirst(".year").text();
-//			
-//			String director = e.select("#info span").get(0).select(".attrs a").text();
-////			String script = e.select("#info span").get(1).select(".attrs a").text();
-//			String script = e.select("#info .attrs").get(1).text();
-//			
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//	}
-
-
-	
+	public static void main(String[] args) {
+		
+		String url = "https://movie.douban.com/subject/1292052/";
+		
+		try {
+			Document d = Jsoup.connect(url).get();
+			
+			Element e = d.getElementById("content");
+			
+			String name = e.selectFirst("h1 span").text();
+			String year = e.selectFirst(".year").text();
+			
+			String director = e.selectFirst("#info .attrs").selectFirst("a").text();
+//			String script = e.select("#info span").get(1).select(".attrs a").text();
+			String script = e.select("#info .attrs").get(1).text();
+			String actor = e.selectFirst(".actor .attrs").text();
+			
+			System.out.println(name);
+			System.out.println(year);
+			System.out.println(director);
+			System.out.println(script);
+			System.out.println(actor);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 }
